@@ -71,5 +71,4 @@ public class BookEntity {
     @JoinColumn(name = "genre_id")
     private GenreEntity genre;
     private String year;
-
 }

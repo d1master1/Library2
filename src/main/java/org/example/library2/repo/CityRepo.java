@@ -1,4 +1,8 @@
 package org.example.library2.repo;
 
-public interface CityRepo {
+import org.example.library2.entity.CityEntity;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface CityRepo extends JpaRepository<CityEntity, Long>{
+
 }
