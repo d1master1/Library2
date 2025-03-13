@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class CityService {
+public interface CityService {
     private final CityRepo repo;
 
     public CityService(CityRepo repo) {

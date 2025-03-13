@@ -30,4 +30,5 @@ public class AuthorService {
     public void update (AuthorEntity data) {
         repo.save(data);
     }
+
 }

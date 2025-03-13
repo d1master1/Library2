@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class PublisherService {
+public interface PublisherService {
     public final PublisherRepo repo;
 
     public PublisherService(PublisherRepo repo) {

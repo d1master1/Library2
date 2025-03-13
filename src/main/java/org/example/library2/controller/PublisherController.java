@@ -1,38 +1,43 @@
 package org.example.library2.controller;
 
-//Доделать по аналогии
+import org.example.library2.entity.PublisherEntity;
+import org.example.library2.response.BaseResponse;
+import org.example.library2.response.DataResponse;
+import org.example.library2.response.ListResponse;
+import org.example.library2.service.PublisherService;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
-/*
 @RestController
-public class AuthorController {
-    private final AuthorService service;
+public class PublisherController {
+    private final PublisherService service;
 
-    public AuthorController(AuthorService service) {
+    public PublisherController(PublisherService service) {
         this.service = service;
     }
 
     @GetMapping("/all")
-    public ResponseEntity<ListResponse<AuthorEntity>> getAll() {
+    public ResponseEntity<ListResponse<PublisherEntity>> getAll() {
         return ResponseEntity.ok(
-                new ListResponse<AuthorEntity>(true, "Список акторов", service.findAll()));
+                new ListResponse<PublisherEntity>(true, "Список акторов", service.findAll()));
     }
 
     @GetMapping
-    public ResponseEntity<DataResponse<AuthorEntity>> by_id(@RequestParam Long id) {
+    public ResponseEntity<DataResponse<PublisherEntity>> by_id(@RequestParam Long id) {
         return ResponseEntity.ok(
-                new DataResponse<AuthorEntity>(true, "Найден следующий автор", service.findById(id).orElseThrow()));
+                new DataResponse<PublisherEntity>(true, "Найден следующий автор", service.findById(id).orElseThrow()));
     }
 
     @PostMapping
-    public ResponseEntity<DataResponse<AuthorEntity>> save(@RequestBody AuthorEntity author) {
+    public ResponseEntity<DataResponse<PublisherEntity>> save(@RequestBody PublisherEntity publisher) {
         return ResponseEntity.ok(
-                new DataResponse<AuthorEntity>(true, "Автор сохранен", service.save(author)));
+                new DataResponse<PublisherEntity>(true, "Автор сохранен", service.save(publisher)));
     }
 
     @PutMapping
-    public ResponseEntity<BaseResponse> update(@RequestBody AuthorEntity author) {
-        service.update(author);
+    public ResponseEntity<BaseResponse> update(@RequestBody PublisherEntity publisher) {
+        service.update(publisher);
         return ResponseEntity.ok(
                 new BaseResponse(true, "Автор сохранен"));
     }
-}*/
+}
