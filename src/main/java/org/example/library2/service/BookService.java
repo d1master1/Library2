@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class BookService {
+public interface BookService {
     private final BookRepo repo;
 
     public BookService(BookRepo repo) {
