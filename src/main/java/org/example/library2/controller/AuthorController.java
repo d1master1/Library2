@@ -34,7 +34,7 @@ public class AuthorController {
                 new DataResponse<AuthorEntity>(true, "Автор сохранен", service.save(author)));
     }
 
-    @PutMapping
+    @PutMapping("/update-author")
     public ResponseEntity<BaseResponse> update(@RequestBody AuthorEntity author) {
         service.update(author);
         return ResponseEntity.ok(

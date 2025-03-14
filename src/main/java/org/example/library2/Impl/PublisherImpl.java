@@ -1,39 +1,41 @@
 package org.example.library2.Impl;
 
-import lombok.RequiredArgsConstructor;
 import org.example.library2.entity.PublisherEntity;
 import org.example.library2.repo.BookRepo;
 import org.example.library2.repo.PublisherRepo;
 import org.example.library2.service.PublisherService;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 
 @Service
-@RequiredArgsConstructor
 public class PublisherImpl implements PublisherService {
 
     private final PublisherRepo publisherRepo;
     private final BookRepo bookRepo;
 
+    public PublisherImpl(PublisherRepo publisherRepo, BookRepo bookRepo) {
+        this.publisherRepo = publisherRepo;
+        this.bookRepo = bookRepo;
+    }
+
     @Override
     public List<PublisherEntity> findAll() {
-        return List.of();
+        return publisherRepo.findAll();
     }
 
     @Override
     public Optional<PublisherEntity> findById(Long id) {
-        return Optional.empty();
+        return publisherRepo.findById(id);
     }
 
     @Override
     public PublisherEntity save(PublisherEntity data) {
-        return null;
+        return publisherRepo.save(data);
     }
 
     @Override
     public void update(PublisherEntity data) {
-
+        publisherRepo.save(data);
     }
 }

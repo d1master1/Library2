@@ -34,7 +34,7 @@ public class GenreController {
                 new DataResponse<GenreEntity>(true, "Автор сохранен", service.save(genre)));
     }
 
-    @PutMapping
+    @PutMapping("/update-genre")
     public ResponseEntity<BaseResponse> update(@RequestBody GenreEntity genre) {
         service.update(genre);
         return ResponseEntity.ok(

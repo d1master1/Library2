@@ -34,7 +34,7 @@ public class PublisherController {
                 new DataResponse<PublisherEntity>(true, "Автор сохранен", service.save(publisher)));
     }
 
-    @PutMapping
+    @PutMapping("/update-publisher")
     public ResponseEntity<BaseResponse> update(@RequestBody PublisherEntity publisher) {
         service.update(publisher);
         return ResponseEntity.ok(

@@ -34,7 +34,7 @@ public class CityController {
                 new DataResponse<CityEntity>(true, "Автор сохранен", service.save(city)));
     }
 
-    @PutMapping
+    @PutMapping("/update-city")
     public ResponseEntity<BaseResponse> update(@RequestBody CityEntity city) {
         service.update(city);
         return ResponseEntity.ok(
