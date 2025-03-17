@@ -18,7 +18,7 @@ public class GenreImpl implements GenreService {
     }
 
     @Override
-    public List<GenreEntity> findAllGenres() {
+    public List<GenreEntity> findAllGenre() {
         return genreRepo.findAll();
     }
 

@@ -9,35 +9,44 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequestMapping("api/v1/publisher")
 public class PublisherController {
-    private final PublisherService service;
 
-    public PublisherController(PublisherService service) {
-        this.service = service;
+    private final PublisherService publisherService;
+
+    public PublisherController(PublisherService publisherService) {
+        this.publisherService = publisherService;
     }
 
     @GetMapping("/all")
-    public ResponseEntity<ListResponse<PublisherEntity>> getAll() {
+    public ResponseEntity<ListResponse<PublisherEntity>> getAllPublishers() {
         return ResponseEntity.ok(
-                new ListResponse<PublisherEntity>(true, "Список акторов", service.findAll()));
+                new ListResponse<PublisherEntity>(true, "Список издательств", publisherService.findAllPublisher()));
     }
 
     @GetMapping
     public ResponseEntity<DataResponse<PublisherEntity>> by_id(@RequestParam Long id) {
         return ResponseEntity.ok(
-                new DataResponse<PublisherEntity>(true, "Найден следующий автор", service.findById(id).orElseThrow()));
+                new DataResponse<PublisherEntity>(true, "Найден следующий издатель", publisherService.findById(id).orElseThrow()));
     }
 
     @PostMapping
     public ResponseEntity<DataResponse<PublisherEntity>> save(@RequestBody PublisherEntity publisher) {
         return ResponseEntity.ok(
-                new DataResponse<PublisherEntity>(true, "Автор сохранен", service.save(publisher)));
+                new DataResponse<PublisherEntity>(true, "Издатель сохранен", publisherService.save(publisher)));
     }
 
-    @PutMapping("/update-publisher")
+    @PutMapping
     public ResponseEntity<BaseResponse> update(@RequestBody PublisherEntity publisher) {
-        service.update(publisher);
+        publisherService.update(publisher);
         return ResponseEntity.ok(
-                new BaseResponse(true, "Автор сохранен"));
+                new BaseResponse(true, "Издатель обновлен"));
+    }
+
+    @DeleteMapping
+    public ResponseEntity<BaseResponse> delete(@RequestParam Long id) {
+        publisherService.deleteById(id);
+        return ResponseEntity.ok(
+                new BaseResponse(true, "Издатель удален"));
     }
 }
