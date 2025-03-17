@@ -1,7 +1,6 @@
 package org.example.library2.Impl;
 
 import org.example.library2.entity.PublisherEntity;
-import org.example.library2.repo.BookRepo;
 import org.example.library2.repo.PublisherRepo;
 import org.example.library2.service.PublisherService;
 import org.springframework.stereotype.Service;
@@ -12,15 +11,13 @@ import java.util.Optional;
 public class PublisherImpl implements PublisherService {
 
     private final PublisherRepo publisherRepo;
-    private final BookRepo bookRepo;
 
-    public PublisherImpl(PublisherRepo publisherRepo, BookRepo bookRepo) {
+    public PublisherImpl(PublisherRepo publisherRepo) {
         this.publisherRepo = publisherRepo;
-        this.bookRepo = bookRepo;
     }
 
     @Override
-    public List<PublisherEntity> findAll() {
+    public List<PublisherEntity> findAllPublisher() {
         return publisherRepo.findAll();
     }
 
@@ -37,5 +34,10 @@ public class PublisherImpl implements PublisherService {
     @Override
     public void update(PublisherEntity data) {
         publisherRepo.save(data);
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        publisherRepo.deleteById(id);
     }
 }

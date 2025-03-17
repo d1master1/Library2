@@ -6,7 +6,7 @@ import java.util.Optional;
 
 public interface CityService {
 
-    public List<CityEntity> findAll();
+    public List<CityEntity> findAllCity();
 
     public Optional<CityEntity> findById(Long id);
 
@@ -14,4 +14,5 @@ public interface CityService {
 
     public void update(CityEntity data);
 
+    void deleteById(Long id);
 }

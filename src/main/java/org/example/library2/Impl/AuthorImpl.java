@@ -2,7 +2,6 @@ package org.example.library2.Impl;
 
 import org.example.library2.entity.AuthorEntity;
 import org.example.library2.repo.AuthorRepo;
-import org.example.library2.repo.BookRepo;
 import org.example.library2.service.AuthorService;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -18,7 +17,7 @@ public class AuthorImpl implements AuthorService {
     }
 
     @Override
-    public List<AuthorEntity> findAll() {
+    public List<AuthorEntity> findAllAuthor() {
         return authorRepo.findAll();
     }
 
@@ -28,12 +27,17 @@ public class AuthorImpl implements AuthorService {
     }
 
     @Override
-    public AuthorEntity save (AuthorEntity data) {
-        return authorRepo.save(data);
+    public AuthorEntity save(AuthorEntity author) {
+        return authorRepo.save(author);
     }
 
     @Override
-    public void update (AuthorEntity data) {
-        authorRepo.save(data);
+    public void update(AuthorEntity author) {
+        authorRepo.save(author);
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        authorRepo.deleteById(id);
     }
 }

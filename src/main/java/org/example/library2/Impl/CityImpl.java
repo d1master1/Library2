@@ -12,15 +12,13 @@ import java.util.Optional;
 public class CityImpl implements CityService {
 
     private final CityRepo cityRepo;
-    private final BookRepo publisherRepo;
 
-    public CityImpl(CityRepo cityRepo, BookRepo publisherRepo) {
+    public CityImpl(CityRepo cityRepo) {
         this.cityRepo = cityRepo;
-        this.publisherRepo = publisherRepo;
     }
 
     @Override
-    public List<CityEntity> findAll() {
+    public List<CityEntity> findAllCity() {
         return cityRepo.findAll();
     }
 
@@ -37,5 +35,10 @@ public class CityImpl implements CityService {
     @Override
     public void update(CityEntity data) {
         cityRepo.save(data);
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        cityRepo.deleteById(id);
     }
 }

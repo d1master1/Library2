@@ -17,7 +17,7 @@ public class BookImpl implements BookService {
     }
 
     @Override
-    public List<BookEntity> findAll() {
+    public List<BookEntity> findAllBook() {
         return bookRepo.findAll();
     }
 
@@ -32,7 +32,12 @@ public class BookImpl implements BookService {
     }
 
     @Override
-    public void update(BookEntity data){
+    public void update(BookEntity data) {
         bookRepo.save(data);
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        bookRepo.deleteById(id);
     }
 }

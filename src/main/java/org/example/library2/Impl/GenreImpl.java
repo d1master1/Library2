@@ -12,15 +12,13 @@ import java.util.Optional;
 public class GenreImpl implements GenreService {
 
     private final GenreRepo genreRepo;
-    private final BookRepo bookRepo;
 
-    public GenreImpl(GenreRepo genreRepo, BookRepo bookRepo) {
+    public GenreImpl(GenreRepo genreRepo) {
         this.genreRepo = genreRepo;
-        this.bookRepo = bookRepo;
     }
 
     @Override
-    public List<GenreEntity> findAll() {
+    public List<GenreEntity> findAllGenres() {
         return genreRepo.findAll();
     }
 
@@ -37,5 +35,10 @@ public class GenreImpl implements GenreService {
     @Override
     public void update(GenreEntity data) {
         genreRepo.save(data);
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        genreRepo.deleteById(id);
     }
 }

@@ -6,7 +6,7 @@ import java.util.Optional;
 
 public interface PublisherService {
 
-    public List<PublisherEntity> findAll();
+    public List<PublisherEntity> findAllPublisher();
 
     public Optional<PublisherEntity> findById(Long id);
 
@@ -14,4 +14,5 @@ public interface PublisherService {
 
     public void update(PublisherEntity data);
 
+    void deleteById(Long id);
 }
