@@ -2,11 +2,8 @@ package org.example.library2.Impl;
 
 import org.example.library2.entity.AuthorEntity;
 import org.example.library2.repo.AuthorRepo;
-import org.example.library2.repo.BookRepo;
 import org.example.library2.service.AuthorService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -14,16 +11,13 @@ import java.util.Optional;
 public class AuthorImpl implements AuthorService {
 
     private final AuthorRepo authorRepo;
-    private final BookRepo bookRepo;
 
-    @Autowired
-    public AuthorImpl(AuthorRepo authorRepo, BookRepo bookRepo) {
+    public AuthorImpl(AuthorRepo authorRepo) {
         this.authorRepo = authorRepo;
-        this.bookRepo = bookRepo;
     }
 
     @Override
-    public List<AuthorEntity> findAll() {
+    public List<AuthorEntity> findAllAuthor() {
         return authorRepo.findAll();
     }
 
@@ -33,13 +27,17 @@ public class AuthorImpl implements AuthorService {
     }
 
     @Override
-    public AuthorEntity save(AuthorEntity data) {
-        return authorRepo.save(data);
+    public AuthorEntity save(AuthorEntity author) {
+        return authorRepo.save(author);
     }
 
     @Override
-    public void update(AuthorEntity data) {
-        authorRepo.save(data);
+    public void update(AuthorEntity author) {
+        authorRepo.save(author);
     }
 
+    @Override
+    public void deleteById(Long id) {
+        authorRepo.deleteById(id);
+    }
 }

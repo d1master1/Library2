@@ -9,35 +9,44 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequestMapping("api/v1/city")
 public class CityController {
-    private final CityService service;
 
-    public CityController(CityService service) {
-        this.service = service;
+    private final CityService cityService;
+
+    public CityController(CityService cityService) {
+        this.cityService = cityService;
     }
 
     @GetMapping("/all")
-    public ResponseEntity<ListResponse<CityEntity>> getAll() {
+    public ResponseEntity<ListResponse<CityEntity>> getAllCities() {
         return ResponseEntity.ok(
-                new ListResponse<CityEntity>(true, "Список акторов", service.findAll()));
+                new ListResponse<CityEntity>(true, "Список городов", cityService.findAllCity()));
     }
 
     @GetMapping
     public ResponseEntity<DataResponse<CityEntity>> by_id(@RequestParam Long id) {
         return ResponseEntity.ok(
-                new DataResponse<CityEntity>(true, "Найден следующий автор", service.findById(id).orElseThrow()));
+                new DataResponse<CityEntity>(true, "Найден следующий город", cityService.findById(id).orElseThrow()));
     }
 
     @PostMapping
     public ResponseEntity<DataResponse<CityEntity>> save(@RequestBody CityEntity city) {
         return ResponseEntity.ok(
-                new DataResponse<CityEntity>(true, "Автор сохранен", service.save(city)));
+                new DataResponse<CityEntity>(true, "Город сохранен", cityService.save(city)));
     }
 
     @PutMapping
     public ResponseEntity<BaseResponse> update(@RequestBody CityEntity city) {
-        service.update(city);
+        cityService.update(city);
         return ResponseEntity.ok(
-                new BaseResponse(true, "Автор сохранен"));
+                new BaseResponse(true, "Город обновлен"));
+    }
+
+    @DeleteMapping
+    public ResponseEntity<BaseResponse> delete(@RequestParam Long id) {
+        cityService.deleteById(id);
+        return ResponseEntity.ok(
+                new BaseResponse(true, "Город удален"));
     }
 }

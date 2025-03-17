@@ -9,35 +9,44 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequestMapping("api/v1/book")
 public class BookController {
-    private final BookService service;
 
-    public BookController(BookService service) {
-        this.service = service;
+    private final BookService bookService;
+
+    public BookController(BookService bookService) {
+        this.bookService = bookService;
     }
 
     @GetMapping("/all")
-    public ResponseEntity<ListResponse<BookEntity>> getAll() {
+    public ResponseEntity<ListResponse<BookEntity>> getAllBooks() {
         return ResponseEntity.ok(
-                new ListResponse<BookEntity>(true, "Список акторов", service.findAll()));
+                new ListResponse<BookEntity>(true, "Список книг" ,bookService.findAllBook()));
     }
 
     @GetMapping
     public ResponseEntity<DataResponse<BookEntity>> by_id(@RequestParam Long id) {
         return ResponseEntity.ok(
-                new DataResponse<BookEntity>(true, "Найден следующий автор", service.findById(id).orElseThrow()));
+                new DataResponse<BookEntity>(true, "Найдена следующая книга", bookService.findById(id).orElseThrow()));
     }
 
     @PostMapping
     public ResponseEntity<DataResponse<BookEntity>> save(@RequestBody BookEntity book) {
         return ResponseEntity.ok(
-                new DataResponse<BookEntity>(true, "Автор сохранен", service.save(book)));
+                new DataResponse<BookEntity>(true, "Книга сохранена", bookService.save(book)));
     }
 
     @PutMapping
     public ResponseEntity<BaseResponse> update(@RequestBody BookEntity book) {
-        service.update(book);
+        bookService.update(book);
         return ResponseEntity.ok(
-                new BaseResponse(true, "Автор сохранен"));
+                new BaseResponse(true, "Книга обновлен"));
+    }
+
+    @DeleteMapping
+    public ResponseEntity<BaseResponse> delete(@RequestParam Long id) {
+        bookService.deleteById(id);
+        return ResponseEntity.ok(
+                new BaseResponse(true, "Книга удалена"));
     }
 }
