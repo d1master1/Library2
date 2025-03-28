@@ -12,6 +12,11 @@ public class GenreEntity {
 
     }
 
+    public GenreEntity(Long id, String title) {
+        this.id = id;
+        this.title = title;
+    }
+
     public GenreEntity(Long id, String title, List<BookEntity> books) {
         this.id = id;
         this.title = title;

@@ -12,6 +12,11 @@ public class PublisherEntity {
 
     }
 
+    public PublisherEntity(Long id, String title) {
+        this.id = id;
+        this.title = title;
+    }
+
     public PublisherEntity(Long id, String title, CityEntity city, List<BookEntity> books) {
         this.id = id;
         this.title = title;
