@@ -10,6 +10,11 @@ public class BookEntity {
 
     }
 
+    public BookEntity(Long id, String year) {
+        this.id = id;
+        this.year = year;
+    }
+
     public BookEntity(Long id, AuthorEntity author, PublisherEntity publisher, GenreEntity genre, String year) {
         this.id = id;
         this.author = author;

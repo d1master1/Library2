@@ -12,6 +12,11 @@ public class CityEntity {
 
     }
 
+    public CityEntity(Long id, String title) {
+        this.id = id;
+        this.title = title;
+    }
+
     public CityEntity(Long id, String title, List<PublisherEntity> publishers) {
         this.id = id;
         this.title = title;
